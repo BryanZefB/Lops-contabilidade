@@ -15,3 +15,80 @@ footer{padding:54px 0 24px;background:#061326;color:#aeb9c7}.footerGrid{display:
 @media(max-width:640px){.shell{width:min(calc(100% - 28px),1180px)}html{scroll-padding-top:76px}.nav{height:68px}.mobile.is-open{top:68px}.brand img{width:128px;height:auto}.hero{padding:52px 0 58px}h1{font-size:42px}.actions{flex-direction:column}.btn{width:100%}.proof{flex-direction:column;gap:14px}.heroPanel{padding:28px;border-radius:18px}.intro,.comparison,.services,.about,.faq{padding:72px 0}.serviceGrid{grid-template-columns:1fr}.service{min-height:290px}.human{padding-bottom:72px}.humanCard{grid-template-columns:1fr;min-height:0}.mark{height:230px;padding:28px}.mark b{font-size:96px}.mark i{width:16px}.mark i:nth-of-type(1){height:62px}.mark i:nth-of-type(2){height:100px}.mark i:nth-of-type(3){height:145px}.facts{grid-template-columns:1fr}.facts div{padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.1)}.final{padding:64px 0}.footerGrid{grid-template-columns:1fr;gap:30px}.bottom{flex-direction:column;gap:8px}.floating{right:14px;bottom:14px}}
 @media(max-width:360px){h1{font-size:38px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Logo placeholder for demo */
+.logoSlot{display:inline-flex;align-items:center;gap:9px;min-height:42px;padding:8px 11px;border:1px dashed #9fb0c4;border-radius:9px;background:#f8fafc;color:var(--navy)}
+.logoSlot span{font:700 12px "Sora";letter-spacing:.12em}.logoSlot small{font-size:11px;color:var(--muted)}
+.logoSlot.compact{padding:7px 10px;min-height:38px}.logoSlot.compact small{display:none}
+.socialTop{width:44px;height:44px;border:1px solid var(--line);border-radius:10px;display:grid;place-items:center;color:var(--navy)}
+.socialTop:hover{color:var(--blue);border-color:#b9cbe1}.mobileInstagram{gap:8px}
+
+/* Instagram */
+.instagramSection{padding:104px 0;background:#fff;border-top:1px solid var(--line)}
+.instagramGrid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(360px,1.1fr);gap:72px;align-items:center}
+.instagramCopy h2{font-size:clamp(32px,4vw,48px);line-height:1.08;letter-spacing:-.04em;margin:18px 0 18px;color:var(--navy)}
+.instagramCopy p{color:var(--muted);max-width:560px}
+.instagramLink{min-height:44px;display:inline-flex;align-items:center;gap:9px;margin-top:18px;color:var(--blue2);font-weight:700}
+.reelWrap{display:flex;justify-content:center;min-width:0}
+.instagram-media{width:100%!important;min-width:0!important;max-width:540px!important;margin:0!important}
+
+/* Contact */
+.contactSection{padding:104px 0;background:var(--surface);border-top:1px solid var(--line)}
+.contactGrid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(520px,1.18fr);gap:72px;align-items:start}
+.contactIntro h2{font-size:clamp(32px,4vw,48px);line-height:1.08;letter-spacing:-.04em;margin:18px 0}
+.contactIntro p{color:var(--muted)}
+.contactNote{display:flex;gap:10px;align-items:flex-start;margin-top:24px;padding-top:20px;border-top:1px solid #cdd8e6;color:#56657a;font-size:13px}
+.contactNote svg{color:var(--blue2);flex:none}
+.contactForm{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px}
+.formGrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.contactForm label{display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:700;color:var(--navy)}
+.contactForm input,.contactForm select,.contactForm textarea{width:100%;border:1px solid #cbd6e3;border-radius:9px;background:#fff;color:var(--ink);font:500 15px "DM Sans";padding:12px 13px;min-height:46px;outline:none}
+.contactForm textarea{resize:vertical;min-height:130px;margin-top:18px}
+.contactForm input::placeholder,.contactForm textarea::placeholder{color:#93a0b2}
+.contactForm input:focus,.contactForm select:focus,.contactForm textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(11,91,211,.12)}
+.formFooter{display:flex;justify-content:space-between;gap:24px;align-items:flex-end;margin-top:20px;min-height:48px}
+.formFooter>div{flex:1}
+.formError,.formStatus{font-size:13px;margin:0}.formError{color:#a52a2a}.formStatus{color:#0d6c48}
+.submitBtn{border:0;cursor:pointer;white-space:nowrap}
+.honeypot{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+
+/* Footer instagram alignment */
+.footerGrid a{gap:7px}
+
+/* Better desktop scaling */
+@media(min-width:1440px){
+ .shell{width:min(calc(100% - 80px),1280px)}
+ .heroGrid{grid-template-columns:minmax(0,1.22fr) minmax(380px,.78fr);gap:88px}
+ .hero{padding:100px 0 92px}
+ .serviceGrid{gap:22px}
+ .service{min-height:345px;padding:30px}
+}
+@media(min-width:1180px) and (max-width:1360px){
+ .shell{width:min(calc(100% - 56px),1200px)}
+ .navlinks{gap:20px}.nav{gap:20px}
+ .heroGrid{gap:48px}
+ .heroPanel{padding:34px}
+ .service{min-height:320px}
+}
+@media(max-width:1120px){
+ .navlinks{gap:18px}.navcta{padding-inline:13px}.socialTop{display:none}
+ .heroGrid{grid-template-columns:1.08fr .92fr;gap:38px}
+ .serviceGrid{grid-template-columns:repeat(2,1fr)}
+ .instagramGrid,.contactGrid{grid-template-columns:1fr 1fr;gap:44px}
+ .contactGrid{grid-template-columns:minmax(0,.9fr) minmax(470px,1.1fr)}
+}
+@media(max-width:960px){
+ .instagramGrid,.contactGrid{grid-template-columns:1fr}
+ .reelWrap{justify-content:flex-start}
+ .contactGrid{gap:40px}
+ .contactForm{max-width:720px}
+}
+@media(max-width:640px){
+ .logoSlot.compact{min-height:36px;padding:6px 8px}.logoSlot.compact span{font-size:10px}
+ .instagramSection,.contactSection{padding:72px 0}
+ .instagramGrid{gap:36px}
+ .formGrid{grid-template-columns:1fr}
+ .contactForm{padding:20px;border-radius:14px}
+ .formFooter{align-items:stretch;flex-direction:column}
+ .submitBtn{width:100%}
+}
