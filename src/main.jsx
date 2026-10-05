@@ -1,4 +1,4 @@
-import React,{useEffect,useId,useState}from'react'
+import React,{useId,useState}from'react'
 import{createRoot}from'react-dom/client'
 import{motion,useReducedMotion}from'motion/react'
 import{ArrowRight,BadgeCheck,BriefcaseBusiness,Building2,Calculator,ChevronDown,CircleDollarSign,ClipboardCheck,FileCheck2,FileText,Instagram,Landmark,MapPin,Menu,MessageCircle,ReceiptText,Send,ShieldCheck,Smartphone,Users,X}from'lucide-react'
@@ -6,7 +6,8 @@ import'./styles.css'
 
 const WA='https://wa.me/5551986001195'
 const INSTAGRAM='https://www.instagram.com/lopes_contabilidade_ofc?stkn=MWYweW45ZHliNWFtOA=='
-const REEL='https://www.instagram.com/reel/DaibvnrNRSs/?stkn=OXV3OXhmMG1lMmsw'\nconst POST='https://www.instagram.com/p/DafxJcvFodA/?stkn=MWNzdmpvZDUwaXJyNg=='
+const REEL='https://www.instagram.com/reel/DaibvnrNRSs/?stkn=OXV3OXhmMG1lMmsw'
+const POST='https://www.instagram.com/p/DafxJcvFodA/?stkn=MWNzdmpvZDUwaXJyNg=='
 const link=m=>WA+'?text='+encodeURIComponent(m)
 
 const services=[
@@ -67,17 +68,9 @@ function Services(){return <section className="services" id="servicos"><div clas
 function Human(){return <section className="human" aria-labelledby="human-title"><div className="shell humanGrid"><Reveal className="humanCard dark"><MessageCircle size={28} aria-hidden="true"/><div><span>Proximidade</span><h2 id="human-title">WhatsApp como canal de conversa, não como fila de protocolo.</h2><p>A comunicação da empresa reforça atendimento humano e contato direto com a equipe.</p></div></Reveal><Reveal className="humanCard light" delay={.06}><FileCheck2 size={28} aria-hidden="true"/><div><span>Organização</span><h3>Conteúdo técnico traduzido para decisões práticas.</h3><p>IR, MEI, notas fiscais, obrigações e tributação aparecem com linguagem acessível e direta.</p></div></Reveal></div></section>}
 
 function InstagramEmbed({url,label}){
- useEffect(()=>{
-  let tries=0
-  const run=()=>{
-   if(window.instgrm?.Embeds?.process){window.instgrm.Embeds.process();return true}
-   return false
-  }
-  if(run())return
-  const timer=setInterval(()=>{tries+=1;if(run()||tries>20)clearInterval(timer)},250)
-  return()=>clearInterval(timer)
- },[url])
- return <div className="instagramEmbed"><blockquote className="instagram-media" data-instgrm-captioned data-instgrm-permalink={url} data-instgrm-version="14"><a href={url} target="_blank" rel="noreferrer">{label}</a></blockquote></div>
+ const clean=url.split('?')[0].replace(/\/$/,'')
+ const embedUrl=clean+'/embed/'
+ return <article className="instagramCard"><div className="instagramFrame"><iframe src={embedUrl} title={label} loading="lazy" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin"/></div><a href={url} target="_blank" rel="noreferrer">{label}<ArrowRight size={15} aria-hidden="true"/></a></article>
 }
 
 function InstagramSection(){return <section className="instagramSection" id="conteudo-instagram"><div className="shell instagramGrid">
