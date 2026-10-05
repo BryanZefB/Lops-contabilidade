@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Verificação de responsividade</title>
+<style>body{margin:0;padding:16px;background:#eef0f1;font:14px sans-serif}header{display:flex;align-items:center;gap:20px;margin-bottom:16px}select{font:inherit;padding:8px}iframe{display:block;margin:auto;border:1px solid #ccd4d9;background:white;height:900px}output{font-size:12px}</style>
+<header><label>Largura da prévia <select id="width"><option>320</option><option selected>375</option><option>414</option><option>768</option><option>1024</option><option>1366</option><option>1440</option></select></label><output id="measurements"></output></header>
+<iframe title="Prévia responsiva" src="/" width="375"></iframe>
+<script>
+const frame=document.querySelector('iframe');
+const widths=document.querySelector('select');
+function measure(){const win=frame.contentWindow;document.querySelector('output').textContent=JSON.stringify({width:win.innerWidth,scrollWidth:win.document.documentElement.scrollWidth,images:Array.from(win.document.images).map(i=>({src:i.getAttribute('src'),width:i.naturalWidth,complete:i.complete})),h1:win.getComputedStyle(win.document.querySelector('h1')).fontSize,ctaBottom:Math.round(win.document.querySelector('.heroActions').getBoundingClientRect().bottom)});}
+widths.addEventListener('change',()=>{frame.style.width=widths.value+'px';requestAnimationFrame(measure)});
+frame.addEventListener('load',measure);
+</script>
+</html>

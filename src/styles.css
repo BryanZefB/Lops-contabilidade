@@ -79,6 +79,9 @@ summary:focus-visible {
   outline: 3px solid var(--blue);
   outline-offset: 5px;
 }
+.footer a:focus-visible {
+  outline-color: #b1cdff;
+}
 ::selection {
   background: #dbe9ff;
   color: var(--ink);
@@ -368,7 +371,7 @@ h1 span {
   max-width: 380px;
   margin-bottom: 4px;
   color: var(--muted);
-  font-size: 15px;
+  font-size: 16px;
 }
 .sectionHeading > .textLink {
   margin-bottom: 4px;
@@ -404,7 +407,7 @@ h1 span {
 .serviceRow > p {
   max-width: 435px;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.65;
 }
 .serviceAction {
@@ -466,7 +469,7 @@ h1 span {
 .aboutCopy > p:not(.eyebrow) {
   margin-top: 22px;
   color: var(--muted);
-  font-size: 15px;
+  font-size: 16px;
 }
 .aboutDetails {
   display: grid;
@@ -522,7 +525,7 @@ h1 span {
 }
 .steps p {
   color: var(--muted);
-  font-size: 14px;
+  font-size: 16px;
 }
 .differentials {
   padding-block: 80px;
@@ -545,7 +548,7 @@ h1 span {
   max-width: 450px;
   margin-top: 24px;
   color: #c1d0d5;
-  font-size: 15px;
+  font-size: 16px;
 }
 .differentialList {
   margin: 0;
@@ -566,7 +569,7 @@ h1 span {
 .differentialList dd {
   margin: 0;
   color: #c1d0d5;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.6;
 }
 
@@ -581,7 +584,7 @@ h1 span {
   max-width: 300px;
   margin-top: 22px;
   color: var(--muted);
-  font-size: 15px;
+  font-size: 16px;
 }
 .instagramProfile {
   margin-top: 22px;
@@ -656,7 +659,7 @@ h1 span {
   max-width: 300px;
   margin-top: 22px;
   color: var(--muted);
-  font-size: 15px;
+  font-size: 16px;
 }
 .faqList {
   border-top: 1px solid var(--line);
@@ -689,7 +692,7 @@ h1 span {
 .faqList details > p {
   padding: 0 40px 24px 0;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 16px;
 }
 
 /* Contact prepares a WhatsApp message without storing submitted data. */
@@ -707,7 +710,7 @@ h1 span {
   max-width: 350px;
   margin-top: 24px;
   color: var(--muted);
-  font-size: 15px;
+  font-size: 16px;
 }
 .contactPhone {
   display: flex;
@@ -1196,7 +1199,7 @@ h1 span {
   }
   .sectionHeading > p {
     max-width: 500px;
-    font-size: 14px;
+    font-size: 16px;
   }
   .serviceRow {
     grid-template-columns: 23px 1fr 44px;
@@ -1216,7 +1219,7 @@ h1 span {
   }
   .serviceRow > p {
     grid-column: 2 / 4;
-    font-size: 13px;
+    font-size: 16px;
   }
   .serviceAction {
     grid-row: 1;
@@ -1233,7 +1236,7 @@ h1 span {
     aspect-ratio: 4 / 4.7;
   }
   .aboutCopy > p:not(.eyebrow) {
-    font-size: 14px;
+    font-size: 16px;
   }
   .aboutDetails {
     gap: 20px;
@@ -1268,7 +1271,7 @@ h1 span {
     font-size: 36px;
   }
   .differentialsGrid > div > p:last-child {
-    font-size: 14px;
+    font-size: 16px;
   }
   .instagramPosts {
     gap: 18px;
@@ -1295,7 +1298,7 @@ h1 span {
   }
   .faqList details > p {
     padding-right: 16px;
-    font-size: 13px;
+    font-size: 16px;
   }
   .contactGrid {
     gap: 30px;
