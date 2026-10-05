@@ -160,3 +160,57 @@ footer{padding:54px 0 24px;background:#061326;color:#aeb9c7}.footerGrid{display:
  .heroPanel{padding:20px}
  .instagramCopy h2,.contactIntro h2,.intro h2,.comparison h2,.sectionHead h2,.about h2,.faq h2,.final h2{font-size:30px}
 }
+
+
+/* Final responsive guard */
+.instagramCard{min-width:0}
+.instagramFrame{width:100%;aspect-ratio:4/5;background:#f7f9fc;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.instagramFrame iframe{display:block;width:100%;height:100%;border:0;background:#fff}
+.instagramCard>a{min-height:44px;display:inline-flex;align-items:center;gap:7px;margin-top:10px;color:var(--blue2);font-size:13px;font-weight:700}
+.footerLogo{background:transparent!important;padding:0!important;border-radius:0!important}
+
+@media(max-width:1040px){
+ .heroGrid{grid-template-columns:minmax(0,1fr)!important;gap:36px!important}
+ .heroCopy,.heroPanel{width:100%!important;max-width:100%!important;min-width:0!important}
+ .introGrid,.compareGrid,.aboutGrid,.faqGrid,.instagramGrid,.contactGrid{grid-template-columns:minmax(0,1fr)!important}
+ .sectionHead{grid-template-columns:minmax(0,1fr)!important}
+ .location{border-left:0!important;padding-left:0!important}
+ .humanGrid{grid-template-columns:minmax(0,1fr)!important}
+ .instagramPosts{grid-template-columns:repeat(2,minmax(0,1fr))!important;width:100%;max-width:760px}
+ .contactForm{width:100%;max-width:760px}
+}
+
+@media(max-width:720px){
+ .shell{width:min(calc(100% - 28px),1180px)!important}
+ .hero{padding:48px 0 58px!important}
+ .heroGrid{gap:30px!important}
+ .heroPanel{padding:26px!important}
+ .serviceGrid,.instagramPosts{grid-template-columns:minmax(0,1fr)!important}
+ .actions{flex-direction:column!important}
+ .actions .btn{width:100%!important}
+ .proof{flex-direction:column!important;gap:14px!important}
+ .formGrid{grid-template-columns:minmax(0,1fr)!important}
+ .formFooter{flex-direction:column!important;align-items:stretch!important}
+ .submitBtn{width:100%!important}
+ .finalInner{flex-direction:column!important;align-items:flex-start!important}
+ .footerGrid{grid-template-columns:minmax(0,1fr)!important}
+ .instagramFrame{aspect-ratio:4/5}
+}
+
+@media(max-width:414px){
+ .shell{width:min(calc(100% - 24px),1180px)!important}
+ .siteLogo{width:112px!important;height:38px!important}
+ h1{font-size:clamp(36px,11vw,42px)!important;line-height:1.04!important}
+ .heroPanel h2{font-size:24px!important}
+ .instagramCopy h2,.contactIntro h2,.intro h2,.comparison h2,.sectionHead h2,.about h2,.faq h2,.final h2{font-size:32px!important}
+ .row{grid-template-columns:minmax(0,1fr)!important;gap:7px!important}
+ .row span{text-align:left!important}
+ .contactForm{padding:18px!important}
+}
+
+@media(max-width:320px){
+ .shell{width:min(calc(100% - 20px),1180px)!important}
+ .siteLogo{width:100px!important;height:34px!important}
+ h1{font-size:34px!important}
+ .instagramCopy h2,.contactIntro h2,.intro h2,.comparison h2,.sectionHead h2,.about h2,.faq h2,.final h2{font-size:29px!important}
+}
