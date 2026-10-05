@@ -214,3 +214,13 @@ footer{padding:54px 0 24px;background:#061326;color:#aeb9c7}.footerGrid{display:
  h1{font-size:34px!important}
  .instagramCopy h2,.contactIntro h2,.intro h2,.comparison h2,.sectionHead h2,.about h2,.faq h2,.final h2{font-size:29px!important}
 }
+
+.strategicVisual{padding:0 0 104px;background:#fff}
+.strategicVisualHead{max-width:920px;margin-bottom:28px}
+.strategicVisualHead h2{font-size:clamp(32px,4vw,48px);line-height:1.08;letter-spacing:-.04em;margin:18px 0}
+.strategicVisualHead p{max-width:760px;color:var(--muted)}
+.strategicVisualCard{border:1px solid var(--line);border-radius:24px;overflow:hidden;background:#fff;box-shadow:var(--shadow)}
+.strategicVisualCard img{display:block;width:100%;height:auto}
+.strategicVisualFoot{margin-top:18px}
+@media(max-width:720px){.strategicVisual{padding:0 0 72px}.strategicVisualHead h2{font-size:32px}.strategicVisualCard{border-radius:18px}.strategicVisualFoot .btn{width:100%;white-space:normal}}
+@media(max-width:414px){.strategicVisualHead h2{font-size:30px}.strategicVisualCard{border-radius:14px}}

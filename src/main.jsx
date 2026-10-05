@@ -67,6 +67,15 @@ function Services(){return <section className="services" id="servicos"><div clas
 
 function Human(){return <section className="human" aria-labelledby="human-title"><div className="shell humanGrid"><Reveal className="humanCard dark"><MessageCircle size={28} aria-hidden="true"/><div><span>Proximidade</span><h2 id="human-title">WhatsApp como canal de conversa, não como fila de protocolo.</h2><p>A comunicação da empresa reforça atendimento humano e contato direto com a equipe.</p></div></Reveal><Reveal className="humanCard light" delay={.06}><FileCheck2 size={28} aria-hidden="true"/><div><span>Organização</span><h3>Conteúdo técnico traduzido para decisões práticas.</h3><p>IR, MEI, notas fiscais, obrigações e tributação aparecem com linguagem acessível e direta.</p></div></Reveal></div></section>}
 
+
+function StrategicVisual(){
+ return <section className="strategicVisual" aria-labelledby="strategic-visual-title"><div className="shell">
+  <Reveal className="strategicVisualHead"><span className="label">Contabilidade estratégica</span><h2 id="strategic-visual-title">Clareza para transformar números em decisões melhores.</h2><p>Uma visão visual da proposta da Lopes: organização fiscal, acompanhamento próximo e informações que ajudam o empresário a conduzir o negócio com mais segurança.</p></Reveal>
+  <Reveal className="strategicVisualCard" delay={.06}><img src="/valor-estrategico-lopes.webp" alt="Peça institucional da Lopes Contabilidade sobre contabilidade estratégica, organização fiscal e apoio consultivo ao crescimento da empresa." width="1279" height="720" loading="lazy"/></Reveal>
+  <Reveal className="strategicVisualFoot" delay={.08}><a className="btn ghost" href="#contato">Quero entender como a Lopes pode apoiar meu negócio</a></Reveal>
+ </div></section>
+}
+
 function InstagramEmbed({url,label}){
  const clean=url.split('?')[0].replace(/\/$/,'')
  const embedUrl=clean+'/embed/'
@@ -126,5 +135,5 @@ function FAQ(){const[a,setA]=useState(0);return <section className="faq" id="faq
 
 function Footer(){return <><section className="final" aria-labelledby="final-title"><div className="shell finalInner"><div><span className="label lightLabel">Próximo passo</span><h2 id="final-title">Contabilidade boa começa com uma conversa clara.</h2><p>Conte o momento da sua empresa e fale diretamente com a Lopes Contabilidade pelo WhatsApp.</p></div><a className="btn white" href={link('Olá! Vim pelo site e quero conversar sobre minha empresa.')} target="_blank" rel="noreferrer">Iniciar conversa<ArrowRight size={18} aria-hidden="true"/></a></div></section><footer><div className="shell footerGrid"><div><BrandLogo footer/><p>Contabilidade em Torres - RS. Atendimento presencial e digital.</p></div><div><strong>Contato</strong><a href="tel:+5551986001195">(51) 98600-1195</a><a href={WA} target="_blank" rel="noreferrer">WhatsApp</a><a href={INSTAGRAM} target="_blank" rel="noreferrer"><Instagram size={16} aria-hidden="true"/>Instagram</a></div><div><strong>Navegação</strong><a href="#servicos">Serviços</a><a href="#conteudo-instagram">Instagram</a><a href="#contato">Contato</a><a href="#faq">Dúvidas</a></div></div><div className="shell bottom"><span>Lopes Contabilidade</span><span>Torres - Rio Grande do Sul</span></div></footer></>}
 
-function App(){return <><Header/><main id="conteudo"><Hero/><Intro/><Comparison/><Services/><Human/><InstagramSection/><About/><ContactForm/><FAQ/></main><Footer/><a className="floating" href={link('Olá! Vim pelo site e gostaria de falar com a Lopes Contabilidade.')} target="_blank" rel="noreferrer" aria-label="Abrir conversa no WhatsApp"><MessageCircle size={23} aria-hidden="true"/></a></>}
+function App(){return <><Header/><main id="conteudo"><Hero/><Intro/><Comparison/><Services/><Human/><StrategicVisual/><InstagramSection/><About/><ContactForm/><FAQ/></main><Footer/><a className="floating" href={link('Olá! Vim pelo site e gostaria de falar com a Lopes Contabilidade.')} target="_blank" rel="noreferrer" aria-label="Abrir conversa no WhatsApp"><MessageCircle size={23} aria-hidden="true"/></a></>}
 createRoot(document.getElementById('root')).render(<App/>)
