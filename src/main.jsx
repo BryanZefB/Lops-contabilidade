@@ -1,4 +1,4 @@
-import React,{useId,useState}from'react'
+import React,{useEffect,useId,useState}from'react'
 import{createRoot}from'react-dom/client'
 import{motion,useReducedMotion}from'motion/react'
 import{ArrowRight,BadgeCheck,BriefcaseBusiness,Building2,Calculator,ChevronDown,CircleDollarSign,ClipboardCheck,FileCheck2,FileText,Instagram,Landmark,MapPin,Menu,MessageCircle,ReceiptText,Send,ShieldCheck,Smartphone,Users,X}from'lucide-react'
@@ -6,7 +6,7 @@ import'./styles.css'
 
 const WA='https://wa.me/5551986001195'
 const INSTAGRAM='https://www.instagram.com/lopes_contabilidade_ofc?stkn=MWYweW45ZHliNWFtOA=='
-const REEL='https://www.instagram.com/reel/DaibvnrNRSs/?stkn=OXV3OXhmMG1lMmsw'
+const REEL='https://www.instagram.com/reel/DaibvnrNRSs/?stkn=OXV3OXhmMG1lMmsw'\nconst POST='https://www.instagram.com/p/DafxJcvFodA/?stkn=MWNzdmpvZDUwaXJyNg=='
 const link=m=>WA+'?text='+encodeURIComponent(m)
 
 const services=[
@@ -31,17 +31,15 @@ function Reveal({children,className='',delay=0}){
  return <motion.div className={className} initial={{opacity:0,y:18}} whileInView={{opacity:1,y:0}} viewport={{once:true,amount:.2}} transition={{duration:.5,delay,ease:[.22,1,.36,1]}}>{children}</motion.div>
 }
 
-function LogoPlaceholder({compact=false}){
- return <div className={compact?'logoSlot compact':'logoSlot'} aria-label="Espaço reservado para a logo da empresa">
-  <span>LOGO</span><small>{compact?'da empresa':'logo da empresa será inserida aqui'}</small>
- </div>
+function BrandLogo({footer=false}){
+ return <img className={footer?'siteLogo footerLogo':'siteLogo'} src="/logo-lopes.webp" alt="Lopes Contabilidade" width="520" height="315"/>
 }
 
 function Header(){
  const[open,setOpen]=useState(false)
  const menuId='menu-mobile'
  return <header className="header"><a className="skip" href="#conteudo">Pular para o conteúdo</a><div className="shell nav">
-  <a href="#inicio" className="brand" aria-label="Lopes Contabilidade - início"><LogoPlaceholder compact/></a>
+  <a href="#inicio" className="brand" aria-label="Lopes Contabilidade - início"><BrandLogo/></a>
   <nav className="navlinks" aria-label="Navegação principal"><a href="#sobre">Sobre</a><a href="#servicos">Serviços</a><a href="#conteudo-instagram">Instagram</a><a href="#contato">Contato</a><a href="#faq">Dúvidas</a></nav>
   <a className="socialTop" href={INSTAGRAM} target="_blank" rel="noreferrer" aria-label="Abrir Instagram da Lopes Contabilidade"><Instagram size={19} aria-hidden="true"/></a>
   <a className="navcta" href={link('Olá! Gostaria de falar com a Lopes Contabilidade.')} target="_blank" rel="noreferrer"><MessageCircle size={18} aria-hidden="true"/>Falar no WhatsApp</a>
@@ -68,9 +66,23 @@ function Services(){return <section className="services" id="servicos"><div clas
 
 function Human(){return <section className="human" aria-labelledby="human-title"><div className="shell humanGrid"><Reveal className="humanCard dark"><MessageCircle size={28} aria-hidden="true"/><div><span>Proximidade</span><h2 id="human-title">WhatsApp como canal de conversa, não como fila de protocolo.</h2><p>A comunicação da empresa reforça atendimento humano e contato direto com a equipe.</p></div></Reveal><Reveal className="humanCard light" delay={.06}><FileCheck2 size={28} aria-hidden="true"/><div><span>Organização</span><h3>Conteúdo técnico traduzido para decisões práticas.</h3><p>IR, MEI, notas fiscais, obrigações e tributação aparecem com linguagem acessível e direta.</p></div></Reveal></div></section>}
 
+function InstagramEmbed({url,label}){
+ useEffect(()=>{
+  let tries=0
+  const run=()=>{
+   if(window.instgrm?.Embeds?.process){window.instgrm.Embeds.process();return true}
+   return false
+  }
+  if(run())return
+  const timer=setInterval(()=>{tries+=1;if(run()||tries>20)clearInterval(timer)},250)
+  return()=>clearInterval(timer)
+ },[url])
+ return <div className="instagramEmbed"><blockquote className="instagram-media" data-instgrm-captioned data-instgrm-permalink={url} data-instgrm-version="14"><a href={url} target="_blank" rel="noreferrer">{label}</a></blockquote></div>
+}
+
 function InstagramSection(){return <section className="instagramSection" id="conteudo-instagram"><div className="shell instagramGrid">
  <Reveal className="instagramCopy"><span className="label">Conteúdo da Lopes</span><h2>Acompanhe orientações contábeis também pelo Instagram.</h2><p>A empresa publica conteúdos sobre rotina fiscal, MEI, Imposto de Renda, notas fiscais e outros assuntos que fazem parte do dia a dia de quem empreende.</p><a className="instagramLink" href={INSTAGRAM} target="_blank" rel="noreferrer"><Instagram size={19} aria-hidden="true"/>@lopes_contabilidade_ofc<ArrowRight size={16} aria-hidden="true"/></a></Reveal>
- <Reveal className="reelWrap" delay={.08}><blockquote className="instagram-media" data-instgrm-captioned data-instgrm-permalink={REEL} data-instgrm-version="14"><a href={REEL} target="_blank" rel="noreferrer">Ver publicação no Instagram</a></blockquote></Reveal>
+ <div className="instagramPosts"><Reveal><InstagramEmbed url={REEL} label="Ver Reel no Instagram"/></Reveal><Reveal delay={.06}><InstagramEmbed url={POST} label="Ver publicação no Instagram"/></Reveal></div>
  </div></section>}
 
 function About(){return <section className="about" aria-labelledby="about-title"><div className="shell aboutGrid"><div className="mark" aria-hidden="true"><b>L</b><i/><i/><i/></div><Reveal><span className="label lightLabel">Lopes Contabilidade</span><h2 id="about-title">Uma marca local, com atendimento presencial e operação digital.</h2><p>A Lopes se apresenta como contabilidade em Torres - RS e informa atuação desde 2015. O posicionamento aproxima a empresa do empreendedor com orientação para a rotina do negócio.</p><div className="facts"><div><strong>2015</strong><span>início informado pela empresa</span></div><div><strong>Torres - RS</strong><span>atendimento presencial</span></div><div><strong>Digital</strong><span>atendimento remoto</span></div></div></Reveal></div></section>}
@@ -119,7 +131,7 @@ function ContactForm(){
 function FAQItem({q,ans,i,open,setOpen}){const uid=useId();const buttonId='faq-button-'+uid;const panelId='faq-panel-'+uid;const on=open===i;return <div className="faqItem"><h3><button id={buttonId} type="button" aria-expanded={on} aria-controls={panelId} onClick={()=>setOpen(on?-1:i)}><span>{q}</span><ChevronDown className={on?'rotated':''} size={20} aria-hidden="true"/></button></h3><div id={panelId} role="region" aria-labelledby={buttonId} hidden={!on}><p>{ans}</p></div></div>}
 function FAQ(){const[a,setA]=useState(0);return <section className="faq" id="faq"><div className="shell faqGrid"><div><span className="label">Dúvidas frequentes</span><h2>Antes de falar com um contador, tire as dúvidas mais comuns.</h2><a href={link('Olá! Tenho uma dúvida sobre minha empresa.')} target="_blank" rel="noreferrer">Fazer uma pergunta<ArrowRight size={16} aria-hidden="true"/></a></div><div className="faqList">{faqs.map(([q,ans],i)=><FAQItem key={q} q={q} ans={ans} i={i} open={a} setOpen={setA}/>)}</div></div></section>}
 
-function Footer(){return <><section className="final" aria-labelledby="final-title"><div className="shell finalInner"><div><span className="label lightLabel">Próximo passo</span><h2 id="final-title">Contabilidade boa começa com uma conversa clara.</h2><p>Conte o momento da sua empresa e fale diretamente com a Lopes Contabilidade pelo WhatsApp.</p></div><a className="btn white" href={link('Olá! Vim pelo site e quero conversar sobre minha empresa.')} target="_blank" rel="noreferrer">Iniciar conversa<ArrowRight size={18} aria-hidden="true"/></a></div></section><footer><div className="shell footerGrid"><div><LogoPlaceholder/><p>Contabilidade em Torres - RS. Atendimento presencial e digital.</p></div><div><strong>Contato</strong><a href="tel:+5551986001195">(51) 98600-1195</a><a href={WA} target="_blank" rel="noreferrer">WhatsApp</a><a href={INSTAGRAM} target="_blank" rel="noreferrer"><Instagram size={16} aria-hidden="true"/>Instagram</a></div><div><strong>Navegação</strong><a href="#servicos">Serviços</a><a href="#conteudo-instagram">Instagram</a><a href="#contato">Contato</a><a href="#faq">Dúvidas</a></div></div><div className="shell bottom"><span>Lopes Contabilidade</span><span>Torres - Rio Grande do Sul</span></div></footer></>}
+function Footer(){return <><section className="final" aria-labelledby="final-title"><div className="shell finalInner"><div><span className="label lightLabel">Próximo passo</span><h2 id="final-title">Contabilidade boa começa com uma conversa clara.</h2><p>Conte o momento da sua empresa e fale diretamente com a Lopes Contabilidade pelo WhatsApp.</p></div><a className="btn white" href={link('Olá! Vim pelo site e quero conversar sobre minha empresa.')} target="_blank" rel="noreferrer">Iniciar conversa<ArrowRight size={18} aria-hidden="true"/></a></div></section><footer><div className="shell footerGrid"><div><BrandLogo footer/><p>Contabilidade em Torres - RS. Atendimento presencial e digital.</p></div><div><strong>Contato</strong><a href="tel:+5551986001195">(51) 98600-1195</a><a href={WA} target="_blank" rel="noreferrer">WhatsApp</a><a href={INSTAGRAM} target="_blank" rel="noreferrer"><Instagram size={16} aria-hidden="true"/>Instagram</a></div><div><strong>Navegação</strong><a href="#servicos">Serviços</a><a href="#conteudo-instagram">Instagram</a><a href="#contato">Contato</a><a href="#faq">Dúvidas</a></div></div><div className="shell bottom"><span>Lopes Contabilidade</span><span>Torres - Rio Grande do Sul</span></div></footer></>}
 
 function App(){return <><Header/><main id="conteudo"><Hero/><Intro/><Comparison/><Services/><Human/><InstagramSection/><About/><ContactForm/><FAQ/></main><Footer/><a className="floating" href={link('Olá! Vim pelo site e gostaria de falar com a Lopes Contabilidade.')} target="_blank" rel="noreferrer" aria-label="Abrir conversa no WhatsApp"><MessageCircle size={23} aria-hidden="true"/></a></>}
 createRoot(document.getElementById('root')).render(<App/>)
